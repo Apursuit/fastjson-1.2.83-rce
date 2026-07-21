@@ -1,0 +1,8 @@
+services:
+  target:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastjson-target
+    ports:
+      - "18080:18080"
